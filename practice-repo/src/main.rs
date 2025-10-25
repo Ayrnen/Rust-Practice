@@ -8,7 +8,7 @@ fn gcd(mut n:i32, mut m:i32) -> i32 {
             n = t;
         }
         
-        m %= n; 
+        m %= n;
 
     }
     
@@ -16,12 +16,10 @@ fn gcd(mut n:i32, mut m:i32) -> i32 {
 }
 
 #[test]
-fn test_gcd(){
+fn test_gcd() {
     assert_eq!(gcd(14, 15), 1);
     assert_eq!(gcd(2*3*5*11*17, 3*7*11*13*19), 3*11);
 }
-
-// use std::env;
 
 use std::str::FromStr;
 
@@ -33,7 +31,7 @@ fn main() {
     for arg in args {
         //convert args from strings to numbers
         let res = i32::from_str(&arg);
-        match {
+        match res {
             Ok(num) => {
                 numbers.push(num);
             }
@@ -45,11 +43,11 @@ fn main() {
     }
     if numbers.len() == 0 {
         eprintln!("Usage: gcd num1 num2 ...");
-        std::process::exit(code:1);
+        std::process::exit(1);
     }
 
     let mut d = numbers[0];
-    for m &numbers[1..] {
+    for m in &numbers[1..] {
         d = gcd(d, *m);
     }
 
